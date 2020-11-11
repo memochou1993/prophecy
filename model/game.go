@@ -12,5 +12,5 @@ type Game struct {
 	OpenedAt    time.Time
 	ClosedAt    time.Time
 	Name        string `gorm:"size:255;not null"`
-	UserID      uint
+	HouseID     uint   `gorm:"not null"`
 }

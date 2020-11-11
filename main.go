@@ -18,12 +18,16 @@ func main() {
 	// TODO: should be removed
 	err = db.Migrator().DropTable(
 		&model.User{},
+		&model.House{},
 		&model.Game{},
+		&model.Entry{},
 	)
 
 	err = db.AutoMigrate(
 		&model.User{},
+		&model.House{},
 		&model.Game{},
+		&model.Entry{},
 	)
 
 	if err != nil {
