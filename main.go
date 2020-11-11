@@ -20,6 +20,8 @@ func main() {
 		&model.User{},
 		&model.House{},
 		&model.Game{},
+		&model.Question{},
+		&model.Answer{},
 		&model.Entry{},
 	)
 
@@ -27,6 +29,8 @@ func main() {
 		&model.User{},
 		&model.House{},
 		&model.Game{},
+		&model.Question{},
+		&model.Answer{},
 		&model.Entry{},
 	)
 
