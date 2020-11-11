@@ -11,8 +11,8 @@ type Question struct {
 	PublishedAt time.Time
 	OpenedAt    time.Time
 	ClosedAt    time.Time
-	Title       string `gorm:"size:255;not null"`
+	Title       string `gorm:"size:255;not null;"`
 	Description string
-	GameID      uint     `gorm:"not null"`
-	Answer      []Answer `gorm:"constraint:OnDelete:CASCADE"`
+	GameID      uint     `gorm:"not null;"`
+	Answer      []Answer `gorm:"constraint:OnDelete:CASCADE;"`
 }
