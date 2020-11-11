@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-type Answer struct {
+type Choice struct {
 	gorm.Model
 	VerifiedAt time.Time
 	Title      string `gorm:"size:255;not null;"`

@@ -14,5 +14,5 @@ type Question struct {
 	Title       string `gorm:"size:255;not null;"`
 	Description string
 	GameID      uint     `gorm:"not null;"`
-	Answer      []Answer `gorm:"constraint:OnDelete:CASCADE;"`
+	Choices     []Choice `gorm:"constraint:OnDelete:CASCADE;"`
 }

@@ -21,7 +21,7 @@ func main() {
 		&model.House{},
 		&model.Game{},
 		&model.Question{},
-		&model.Answer{},
+		&model.Choice{},
 		&model.Entry{},
 	)
 
@@ -30,7 +30,7 @@ func main() {
 		&model.House{},
 		&model.Game{},
 		&model.Question{},
-		&model.Answer{},
+		&model.Choice{},
 		&model.Entry{},
 	)
 
