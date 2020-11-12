@@ -1,14 +1,14 @@
 package main
 
 import (
-	"github.com/memochou1993/quiz/model"
+	"github.com/memochou1993/prophecy/model"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"log"
 )
 
 func main() {
-	dsn := "root:root@tcp(127.0.0.1:3306)/quiz"
+	dsn := "root:root@tcp(127.0.0.1:3306)/prophecy"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 
 	if err != nil {
