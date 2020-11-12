@@ -6,6 +6,6 @@ import (
 
 type Answer struct {
 	gorm.Model
-	UserID   uint `gorm:"not null;"`
-	ChoiceID uint `gorm:"not null;"`
+	UserID   uint `gorm:"not null;" json:"-"`
+	ChoiceID uint `gorm:"not null;" json:"-"`
 }
