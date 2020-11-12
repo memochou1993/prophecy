@@ -5,9 +5,10 @@ import "gorm.io/gorm"
 type House struct {
 	gorm.Model
 	Name         string        `gorm:"size:255;not null;uniqueIndex;"`
-	Currency     string        `gorm:"size:20;not null;uniqueIndex;"`
 	Settings     string        `gorm:"type:json;"`
 	UserID       uint          `gorm:"not null;"`
-	Entries      []Entry       `gorm:"constraint:OnDelete:CASCADE;"`
-	Participants []Participant `gorm:"polymorphic:Owner;polymorphicValue:house;constraint:OnDelete:CASCADE;"`
+	Point        Point         `gorm:"constraint:OnDelete:CASCADE;"`
+	Property     Property      `gorm:"polymorphic:Owner;polymorphicValue:house;"`
+	Entries      []Entry       `gorm:"polymorphic:Owner;polymorphicValue:house;"`
+	Participants []Participant `gorm:"polymorphic:Owner;polymorphicValue:house;"`
 }
