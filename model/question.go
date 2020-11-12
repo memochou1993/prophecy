@@ -13,7 +13,6 @@ type Question struct {
 	ClosedAt    time.Time
 	Title       string `gorm:"size:255;not null;"`
 	Description string
-	GameID      uint     `gorm:"not null;"`
 	Choices     []Choice `gorm:"constraint:OnDelete:CASCADE;"`
 	Entries     []Entry  `gorm:"polymorphic:Owner;polymorphicValue:question;constraint:OnDelete:CASCADE;"`
 }

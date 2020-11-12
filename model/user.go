@@ -7,7 +7,6 @@ type User struct {
 	Name     string  `gorm:"size:255;not null;"`
 	Email    string  `gorm:"size:255;not null;uniqueIndex;"`
 	Password string  `gorm:"size:255;not null;"`
-	Houses   []House `gorm:"constraint:OnDelete:CASCADE;"`
-	Games    []Game  `gorm:"many2many:tickets;constraint:OnDelete:CASCADE;"`
+	House    House   `gorm:"constraint:OnDelete:CASCADE;"`
 	Entries  []Entry `gorm:"polymorphic:Owner;polymorphicValue:user;constraint:OnDelete:CASCADE;"`
 }

@@ -9,6 +9,5 @@ type House struct {
 	Settings     string        `gorm:"type:json;"`
 	UserID       uint          `gorm:"not null;"`
 	Entries      []Entry       `gorm:"constraint:OnDelete:CASCADE;"`
-	Games        []Game        `gorm:"constraint:OnDelete:CASCADE;"`
 	Participants []Participant `gorm:"polymorphic:Owner;polymorphicValue:house;constraint:OnDelete:CASCADE;"`
 }

@@ -19,22 +19,22 @@ func main() {
 	err = db.Migrator().DropTable(
 		&model.User{},
 		&model.House{},
-		&model.Game{},
 		&model.Question{},
 		&model.Choice{},
 		&model.Answer{},
 		&model.Participant{},
+		&model.Property{},
 		&model.Entry{},
 	)
 
 	err = db.AutoMigrate(
 		&model.User{},
 		&model.House{},
-		&model.Game{},
 		&model.Question{},
 		&model.Choice{},
 		&model.Answer{},
 		&model.Participant{},
+		&model.Property{},
 		&model.Entry{},
 	)
 
