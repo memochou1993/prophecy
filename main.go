@@ -22,6 +22,7 @@ func main() {
 		&model.Game{},
 		&model.Question{},
 		&model.Choice{},
+		&model.Answer{},
 		&model.Participant{},
 		&model.Entry{},
 	)
@@ -32,6 +33,7 @@ func main() {
 		&model.Game{},
 		&model.Question{},
 		&model.Choice{},
+		&model.Answer{},
 		&model.Participant{},
 		&model.Entry{},
 	)
