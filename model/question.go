@@ -15,4 +15,5 @@ type Question struct {
 	Description string
 	GameID      uint     `gorm:"not null;"`
 	Choices     []Choice `gorm:"constraint:OnDelete:CASCADE;"`
+	Entries     []Entry  `gorm:"polymorphic:Owner;polymorphicValue:question;constraint:OnDelete:CASCADE;"`
 }
