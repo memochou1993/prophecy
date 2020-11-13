@@ -1,15 +1,14 @@
 package model
 
 import (
-	"database/sql"
 	"gorm.io/gorm"
 	"time"
 )
 
 type Question struct {
 	gorm.Model
-	ReviewedAt   sql.NullTime
-	PublishedAt  sql.NullTime
+	ReviewedAt   NullTime
+	PublishedAt  NullTime
 	OpenedAt     time.Time
 	ClosedAt     time.Time
 	Title        string `gorm:"size:255;not null;"`
