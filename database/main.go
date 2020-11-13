@@ -28,8 +28,8 @@ func DB() *gorm.DB {
 	return db
 }
 
-func Migrate() error {
-	return DB().AutoMigrate(
+func Migrate() {
+	err := DB().AutoMigrate(
 		&model.User{},
 		&model.House{},
 		&model.Point{},
@@ -40,26 +40,26 @@ func Migrate() error {
 		&model.Property{},
 		&model.Entry{},
 	)
-}
 
-func Flush() error {
-	return DB().Migrator().DropTable(
-		&model.User{},
-		&model.House{},
-		&model.Point{},
-		&model.Question{},
-		&model.Choice{},
-		&model.Answer{},
-		&model.Participant{},
-		&model.Property{},
-		&model.Entry{},
-	)
-}
-
-func Refresh() error {
-	if err := Flush(); err != nil {
+	if err != nil {
 		log.Fatal(err)
 	}
+}
 
-	return Migrate()
+func Flush() {
+	err := DB().Migrator().DropTable(
+		&model.User{},
+		&model.House{},
+		&model.Point{},
+		&model.Question{},
+		&model.Choice{},
+		&model.Answer{},
+		&model.Participant{},
+		&model.Property{},
+		&model.Entry{},
+	)
+
+	if err != nil {
+		log.Fatal(err)
+	}
 }
