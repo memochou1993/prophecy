@@ -1,4 +1,4 @@
-package auth
+package token
 
 import (
 	"errors"
@@ -18,7 +18,7 @@ type Claims struct {
 	jwt.StandardClaims
 }
 
-func Login(c echo.Context) error {
+func Issue(c echo.Context) error {
 	credentials := new(request.Credentials)
 
 	if err := c.Bind(credentials); err != nil {
