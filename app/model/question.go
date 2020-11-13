@@ -16,6 +16,6 @@ type Question struct {
 	HouseID      uint          `gorm:"not null;" json:"-"`
 	Choices      []Choice      `gorm:"constraint:OnDelete:CASCADE;" json:",omitempty"`
 	Participants []Participant `gorm:"polymorphic:Owner;polymorphicValue:question;" json:",omitempty"`
-	Property     []Property    `gorm:"polymorphic:Owner;polymorphicValue:question;" json:",omitempty"`
+	Property     *Property     `gorm:"polymorphic:Owner;polymorphicValue:question;" json:",omitempty"`
 	Entries      []Entry       `gorm:"polymorphic:Owner;polymorphicValue:question;" json:",omitempty"`
 }

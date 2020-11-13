@@ -8,4 +8,5 @@ type Property struct {
 	PointID   uint   `gorm:"not null;" json:"-"`
 	OwnerID   uint   `json:"-"`
 	OwnerType string `gorm:"size:20;not null;" json:"-"`
+	Point     Point
 }

@@ -13,8 +13,8 @@ type User struct {
 	House        *House        `gorm:"constraint:OnDelete:CASCADE;" json:",omitempty"`
 	Choices      []Choice      `gorm:"many2many:answers;" json:",omitempty"`
 	Answers      []Answer      `gorm:"constraint:OnDelete:CASCADE;" json:",omitempty"` // constraint
-	Participants []Participant `gorm:"constraint:OnDelete:CASCADE;" json:",omitempty"`
-	Property     *Property     `gorm:"polymorphic:Owner;polymorphicValue:user;" json:",omitempty"`
+	Participants []Participant `gorm:"constraint:OnDelete:CASCADE;" json:",omitempty"` // constraint
+	Properties   []Property    `gorm:"polymorphic:Owner;polymorphicValue:user;" json:",omitempty"`
 	Entries      []Entry       `gorm:"polymorphic:Owner;polymorphicValue:user;" json:",omitempty"`
 }
 
