@@ -22,7 +22,7 @@ func DB() *gorm.DB {
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal(err.Error())
 	}
 
 	return db
@@ -42,7 +42,7 @@ func Migrate() {
 	)
 
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal(err.Error())
 	}
 }
 
@@ -60,6 +60,6 @@ func Flush() {
 	)
 
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal(err.Error())
 	}
 }

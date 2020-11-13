@@ -1,7 +1,7 @@
 package profile
 
 import (
-	"github.com/labstack/echo"
+	"github.com/labstack/echo/v4"
 	"github.com/memochou1993/prophecy/app/model"
 	"github.com/memochou1993/prophecy/database"
 	"gorm.io/gorm/clause"
