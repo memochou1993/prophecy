@@ -1,9 +1,7 @@
 package model
 
-import "gorm.io/gorm"
-
 type Member struct {
-	gorm.Model
+	Model
 	UserID  uint `gorm:"not null;" json:"-"`
 	HouseID uint `gorm:"not null;" json:"-"`
 }

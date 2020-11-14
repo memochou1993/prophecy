@@ -1,9 +1,7 @@
 package model
 
-import "gorm.io/gorm"
-
 type Participant struct {
-	gorm.Model
+	Model
 	UserID     uint `gorm:"not null;" json:"-"`
 	QuestionID uint `gorm:"not null;" json:"-"`
 }
