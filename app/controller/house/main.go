@@ -45,16 +45,13 @@ func Store(c echo.Context) error {
 		return c.JSON(http.StatusBadRequest, nil)
 	}
 
+	// FIXME: unhandled duplicate name of point
 	if err := database.DB().Model(&user).Association("OwnedHouses").Append(&house); err != nil {
 		return c.JSON(http.StatusInternalServerError, err.Error())
 	}
 
 	return c.JSON(http.StatusCreated, nil)
 }
-
-// func Update(c echo .Context) error {
-// 	// TODO
-// }
 
 func Destroy(c echo.Context) error {
 	house := model.House{
