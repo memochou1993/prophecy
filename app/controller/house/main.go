@@ -45,9 +45,25 @@ func Store(c echo.Context) error {
 // 	// TODO
 // }
 
-// func Destroy(c echo .Context) error {
-// 	// TODO
-// }
+func Destroy(c echo.Context) error {
+	user := model.User{}
+
+	if result := database.DB().First(&user, c.Get("user").(*jwt.Token).Claims.(*token.Claims).UserID); result.RowsAffected == 0 {
+		return c.JSON(http.StatusBadRequest, result.Error.Error())
+	}
+
+	house := model.House{
+		OwnerID: user.ID,
+	}
+
+	if result := database.DB().First(&house, c.Param("houseID")); result.RowsAffected == 0 {
+		return c.JSON(http.StatusBadRequest, result.Error.Error())
+	}
+
+	database.DB().Model(&house).Delete(&house)
+
+	return c.JSON(http.StatusNoContent, nil)
+}
 
 func AttachUser(c echo.Context) error {
 	house := model.House{}

@@ -17,10 +17,13 @@ func New() *echo.Echo {
 	api.POST("/auth/token", token.Issue)
 
 	api.Use(middleware.VerifyToken())
-	api.POST("/user/houses", house.Store)
-	// api.PATCH("/user/houses/:houseID", house.Update)
-	// api.DELETE("/user/houses/:houseID", house.Destroy)
 	api.GET("/users/:userID", user.Show)
+
+	// api.POST("/user/houses", house.Index)
+	api.POST("/user/houses", house.Store)
+	// api.PATCH("/houses/:houseID", house.Update)
+	api.DELETE("/houses/:houseID", house.Destroy)
+
 	api.GET("/houses/:houseID/questions", question.Index)
 	api.POST("/houses/:houseID/questions", question.Store)
 	// api.PATCH("/questions", question.Update)
