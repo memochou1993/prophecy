@@ -6,7 +6,8 @@ type House struct {
 	gorm.Model
 	Name      string     `gorm:"size:255;not null;uniqueIndex;"`
 	Settings  string     `gorm:"type:json;"`
-	Users     []User     `gorm:"many2many:house;" json:",omitempty"`
+	OwnerID   uint       `gorm:"foreignKey:OwnerID;not null;" json:"-"`
+	Users     []User     `gorm:"many2many:members;" json:",omitempty"`
 	Members   []Member   `gorm:"constraint:OnDelete:CASCADE;" json:",omitempty"` // constraint
 	Questions []Question `gorm:"constraint:OnDelete:CASCADE;" json:",omitempty"`
 	Point     *Point     `gorm:"constraint:OnDelete:CASCADE;" json:",omitempty"`
