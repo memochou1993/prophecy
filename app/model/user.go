@@ -13,6 +13,9 @@ type User struct {
 	House        *House        `gorm:"constraint:OnDelete:CASCADE;" json:",omitempty"`
 	Choices      []Choice      `gorm:"many2many:answers;" json:",omitempty"`
 	Answers      []Answer      `gorm:"constraint:OnDelete:CASCADE;" json:",omitempty"` // constraint
+	Houses       []House       `gorm:"many2many:user;" json:",omitempty"`
+	Members      []Member      `gorm:"constraint:OnDelete:CASCADE;" json:",omitempty"` // constraint
+	Questions    []Question    `gorm:"many2many:user;" json:",omitempty"`
 	Participants []Participant `gorm:"constraint:OnDelete:CASCADE;" json:",omitempty"` // constraint
 	Properties   []Property    `gorm:"polymorphic:Owner;polymorphicValue:user;" json:",omitempty"`
 	Entries      []Entry       `gorm:"polymorphic:Owner;polymorphicValue:user;" json:",omitempty"`
