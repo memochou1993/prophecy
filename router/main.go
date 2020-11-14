@@ -2,6 +2,7 @@ package router
 
 import (
 	"github.com/labstack/echo/v4"
+	"github.com/memochou1993/prophecy/app/controller/question"
 	"github.com/memochou1993/prophecy/app/controller/token"
 	"github.com/memochou1993/prophecy/app/controller/user"
 	"github.com/memochou1993/prophecy/app/middleware"
@@ -16,7 +17,7 @@ func New() *echo.Echo {
 
 	api.Use(middleware.VerifyToken())
 	api.GET("/users/:userID", user.Show)
-	// api.GET("/users/:user/questions", nil) // TODO
+	api.GET("/questions", question.Index)
 
 	return router
 }

@@ -10,7 +10,7 @@ import (
 func Show(c echo.Context) error {
 	user := model.User{}
 
-	database.
+	result := database.
 		DB().
 		Preload("OwnedHouses").
 		Preload("JoinedHouses").
@@ -21,7 +21,11 @@ func Show(c echo.Context) error {
 		Preload("Properties.Point").
 		Preload("Entries").
 		Preload("Entries.Point").
-		Find(&user, c.Param("userID"))
+		First(&user, c.Param("userID"))
+
+	if result.RowsAffected == 0 {
+		return echo.ErrNotFound
+	}
 
 	return c.JSON(http.StatusOK, user)
 }
