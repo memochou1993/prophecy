@@ -1,34 +1,23 @@
 package model
 
 import (
-	"encoding/json"
-	"gorm.io/gorm"
 	"time"
 )
 
 type Question struct {
-	gorm.Model
-	ReviewedAt   NullTime
-	PublishedAt  NullTime
-	OpenedAt     time.Time
-	ClosedAt     time.Time
-	Title        string `gorm:"size:255;not null;"`
-	Description  string
-	HouseID      uint          `gorm:"not null;" json:"houseID,omitempty"`
-	OwnerID      uint          `gorm:"not null;" json:"-"`
-	Owner        *User         `gorm:"constraint:OnDelete:CASCADE;" json:",omitempty"`
-	Users        []User        `gorm:"many2many:participants;" json:",omitempty"`
-	Participants []Participant `gorm:"constraint:OnDelete:CASCADE;" json:",omitempty"` // constraint
-	Choices      []Choice      `gorm:"constraint:OnDelete:CASCADE;" json:",omitempty"`
-	Property     *Property     `gorm:"polymorphic:Owner;polymorphicValue:question;" json:",omitempty"`
-	Entries      []Entry       `gorm:"polymorphic:Owner;polymorphicValue:question;" json:",omitempty"`
-}
-
-func (q Question) MarshalJSON() ([]byte, error) {
-	type question Question
-
-	item := question(q)
-	item.HouseID = 0
-
-	return json.Marshal(item)
+	Model
+	ReviewedAt   NullTime      `json:"reviewedAt"`
+	PublishedAt  NullTime      `json:"publishedAt"`
+	OpenedAt     time.Time     `json:"openedAt"`
+	ClosedAt     time.Time     `json:"closedAt"`
+	Title        string        `gorm:"size:255;not null;" json:"title"`
+	Description  string        `gorm:"size:255;not null;" json:"description"`
+	HouseID      uint          `gorm:"not null;" json:"houseID"`
+	OwnerID      uint          `gorm:"not null;" json:"ownerID"`
+	Owner        *User         `gorm:"constraint:OnDelete:CASCADE;" json:"owner,omitempty"`
+	Users        []User        `gorm:"many2many:participants;" json:"users,omitempty"`
+	Participants []Participant `gorm:"constraint:OnDelete:CASCADE;" json:"-"` // constraint
+	Choices      []Choice      `gorm:"constraint:OnDelete:CASCADE;" json:"choices,omitempty"`
+	Property     *Property     `gorm:"polymorphic:Owner;polymorphicValue:question;" json:"property,omitempty"`
+	Entries      []Entry       `gorm:"polymorphic:Owner;polymorphicValue:question;" json:"entries,omitempty"`
 }
