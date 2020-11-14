@@ -1,13 +1,11 @@
 package token
 
 import (
-	"errors"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/labstack/echo/v4"
 	"github.com/memochou1993/prophecy/app/model"
 	"github.com/memochou1993/prophecy/app/request"
 	"github.com/memochou1993/prophecy/database"
-	"gorm.io/gorm"
 	"net/http"
 	"os"
 	"time"
@@ -33,7 +31,7 @@ func Issue(c echo.Context) error {
 
 	result := database.DB().Where(&model.User{Email: credentials.Email}).First(&user)
 
-	if errors.Is(result.Error, gorm.ErrRecordNotFound) {
+	if result.RowsAffected == 0 {
 		return echo.ErrUnauthorized
 	}
 

@@ -12,7 +12,7 @@ func Index(c echo.Context) error {
 	question := new(request.Question)
 
 	if err := c.Bind(question); err != nil {
-		return echo.ErrBadRequest
+		return c.JSON(http.StatusBadRequest, err.Error())
 	}
 
 	if err := c.Validate(question); err != nil {
