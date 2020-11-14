@@ -12,9 +12,11 @@ func Show(c echo.Context) error {
 
 	database.
 		DB().
-		Preload("House").
-		Preload("House.Point").
-		// Preload("Participants"). // FIXME
+		Preload("OwnedHouses").
+		Preload("JoinedHouses").
+		Preload("OwnedQuestions").
+		Preload("JoinedQuestions").
+		Preload("Choices").
 		Preload("Properties").
 		Preload("Properties.Point").
 		Preload("Entries").
