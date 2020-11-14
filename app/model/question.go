@@ -12,7 +12,7 @@ type Question struct {
 	ClosedAt     time.Time     `json:"closedAt"`
 	Title        string        `gorm:"size:255;not null;" json:"title"`
 	Description  string        `gorm:"size:255;not null;" json:"description"`
-	HouseID      uint          `gorm:"not null;" json:"houseID"`
+	HouseID      uint          `gorm:"not null;" json:"houseID" validate:"required"`
 	OwnerID      uint          `gorm:"not null;" json:"ownerID"`
 	Owner        *User         `gorm:"constraint:OnDelete:CASCADE;" json:"owner,omitempty"`
 	Users        []User        `gorm:"many2many:participants;" json:"users,omitempty"`

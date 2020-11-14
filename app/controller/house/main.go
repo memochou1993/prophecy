@@ -41,6 +41,10 @@ func Store(c echo.Context) error {
 	return c.JSON(http.StatusCreated, nil)
 }
 
+// func Update(c echo .Context) error {
+// 	// TODO
+// }
+
 // func Destroy(c echo .Context) error {
 // 	// TODO
 // }

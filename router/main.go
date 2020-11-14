@@ -18,11 +18,15 @@ func New() *echo.Echo {
 
 	api.Use(middleware.VerifyToken())
 	api.POST("/user/houses", house.Store)
+	// api.PATCH("/user/houses/:houseID", house.Update)
 	// api.DELETE("/user/houses/:houseID", house.Destroy)
 	api.GET("/users/:userID", user.Show)
-	api.POST("/houses/:houseID/users/:userID", house.AttachUser)   // FIXME
-	api.DELETE("/houses/:houseID/users/:userID", house.DetachUser) // FIXME
 	api.GET("/questions", question.Index)
+	// api.POST("/questions", question.Store)
+	// api.PATCH("/questions", question.Update)
+	// api.DELETE("/questions", question.Destroy)
+	api.POST("/houses/:houseID/users/:userID", house.AttachUser)
+	api.DELETE("/houses/:houseID/users/:userID", house.DetachUser)
 
 	return router
 }
