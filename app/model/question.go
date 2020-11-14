@@ -13,8 +13,9 @@ type Question struct {
 	ClosedAt     time.Time
 	Title        string `gorm:"size:255;not null;"`
 	Description  string
-	HouseID      uint          `gorm:"not null;" json:"-"`
-	OwnerID      uint          `gorm:"not null;" json:"-"`
+	HouseID      uint `gorm:"not null;" json:"-"`
+	OwnerID      uint `gorm:"not null;" json:"-"`
+	Owner        User
 	Users        []User        `gorm:"many2many:participants;" json:",omitempty"`
 	Participants []Participant `gorm:"constraint:OnDelete:CASCADE;" json:",omitempty"` // constraint
 	Choices      []Choice      `gorm:"constraint:OnDelete:CASCADE;" json:",omitempty"`

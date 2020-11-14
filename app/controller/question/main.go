@@ -12,7 +12,7 @@ func Index(c echo.Context) error {
 	question := new(request.Question)
 
 	if err := c.Bind(question); err != nil {
-		return echo.ErrInternalServerError
+		return echo.ErrBadRequest
 	}
 
 	if err := c.Validate(question); err != nil {
@@ -24,6 +24,7 @@ func Index(c echo.Context) error {
 	database.
 		DB().
 		Where(question).
+		Preload("Owner").
 		Find(&questions)
 
 	return c.JSON(http.StatusOK, questions)
