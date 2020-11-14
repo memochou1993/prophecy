@@ -25,8 +25,8 @@ type User struct {
 func (u User) MarshalJSON() ([]byte, error) {
 	type user User
 
-	x := user(u)
-	x.Password = ""
+	item := user(u)
+	item.Password = ""
 
-	return json.Marshal(x)
+	return json.Marshal(item)
 }

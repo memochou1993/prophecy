@@ -20,7 +20,7 @@ func Issue(c echo.Context) error {
 	credentials := new(request.Credentials)
 
 	if err := c.Bind(credentials); err != nil {
-		return echo.ErrInternalServerError
+		return c.JSON(http.StatusBadRequest, err)
 	}
 
 	if err := c.Validate(credentials); err != nil {
