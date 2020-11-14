@@ -32,12 +32,12 @@ func Migrate() {
 	err := DB().AutoMigrate(
 		&model.User{},
 		&model.House{},
-		&model.Point{},
+		&model.Member{},
 		&model.Question{},
+		&model.Participant{},
 		&model.Choice{},
 		&model.Answer{},
-		&model.Member{},
-		&model.Participant{},
+		&model.Point{},
 		&model.Property{},
 		&model.Entry{},
 	)
@@ -51,12 +51,12 @@ func Flush() {
 	err := DB().Migrator().DropTable(
 		&model.User{},
 		&model.House{},
-		&model.Point{},
+		&model.Member{},
 		&model.Question{},
+		&model.Participant{},
 		&model.Choice{},
 		&model.Answer{},
-		&model.Member{},
-		&model.Participant{},
+		&model.Point{},
 		&model.Property{},
 		&model.Entry{},
 	)
