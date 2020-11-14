@@ -19,7 +19,7 @@ func New() *echo.Echo {
 	api.Use(middleware.VerifyToken())
 	api.GET("/users/:userID", user.Show)
 
-	// api.POST("/user/houses", house.Index)
+	api.GET("/user/houses", house.Index)
 	api.POST("/user/houses", house.Store)
 	// api.PATCH("/houses/:houseID", house.Update)
 	api.DELETE("/houses/:houseID", house.Destroy)

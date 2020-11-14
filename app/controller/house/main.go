@@ -9,6 +9,17 @@ import (
 	"net/http"
 )
 
+func Index(c echo.Context) error {
+	var houses []model.House
+
+	database.
+		DB().
+		Where("owner_id = ?", c.Get("user").(*jwt.Token).Claims.(*token.Claims).UserID).
+		Find(&houses)
+
+	return c.JSON(http.StatusOK, houses)
+}
+
 func Store(c echo.Context) error {
 	user := model.User{}
 
@@ -46,14 +57,8 @@ func Store(c echo.Context) error {
 // }
 
 func Destroy(c echo.Context) error {
-	user := model.User{}
-
-	if result := database.DB().First(&user, c.Get("user").(*jwt.Token).Claims.(*token.Claims).UserID); result.RowsAffected == 0 {
-		return c.JSON(http.StatusBadRequest, result.Error.Error())
-	}
-
 	house := model.House{
-		OwnerID: user.ID,
+		OwnerID: c.Get("user").(*jwt.Token).Claims.(*token.Claims).UserID,
 	}
 
 	if result := database.DB().First(&house, c.Param("houseID")); result.RowsAffected == 0 {

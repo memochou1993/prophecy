@@ -16,12 +16,6 @@ func Index(c echo.Context) error {
 		return c.JSON(http.StatusBadRequest, result.Error.Error())
 	}
 
-	question := model.Question{}
-
-	if err := c.Bind(&question); err != nil {
-		return c.JSON(http.StatusBadRequest, err)
-	}
-
 	var questions []model.Question
 
 	database.
